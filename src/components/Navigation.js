@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../constants/colors.css';
 import { Link } from 'react-router-dom';
 import '../constants/colors.css';
+import Button from './Button';
 function Navigation(props) {
     const [isOpen, setIsOpen] = useState(false);
     return (
@@ -26,7 +27,9 @@ function Navigation(props) {
                     <Link to="/login" className='nav-link'>Login</Link>
                 </div>
                 <div className="nav-item">
-                    <button className='btn mainb py-0 rounded-2'><Link to="/register" className='nav-link text-white'>Register</Link></button>
+                    <Link to="/register" className='nav-link'>
+                        <Button text="Register" className="lightmbo px-5 lightmt" />
+                    </Link>
                 </div>
             </div>
         </nav>

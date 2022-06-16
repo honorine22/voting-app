@@ -1,6 +1,7 @@
 import React from 'react';
 import '../constants/colors.css';
 import hero from '../hero.png';
+import Button from './Button';
 function Header(props) {
     return (
         <div className='d-sm-block d-md-flex d-lg-flex mt-5 mx-sm-0 mx-md-5 mx-lg-5 justify-content-around'>
@@ -11,7 +12,7 @@ function Header(props) {
                     exercitation incididunt aliquip deserunt.
                 </p>
                 <div className='mt-5 mx-2 d-flex justify-content-start'>
-                    <button className='rounded-2 text-white px-5 btn mainb'>Start Voting</button>
+                    <Button text="Start Voting" className="yellowb text-white" />
                 </div>
             </div>
             <img className='img-fluid col-sm-12 col-md-6 col-lg-3 mt-sm-5' src={hero} alt='header Image' />
