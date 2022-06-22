@@ -1,0 +1,11 @@
+.forms {
+    background-color: #FAF3FF;
+    background-image: url('../assets/form_eelipse.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+img {
+    height: 535px;
+}

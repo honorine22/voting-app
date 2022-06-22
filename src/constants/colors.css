@@ -10,6 +10,10 @@
     background-color: #FF9900;
 }
 
+.yellowt {
+    color: #FF9900;
+}
+
 .lightyb {
     background-color: #FFC165;
 }
@@ -33,4 +37,16 @@
 
 .footer {
     background-color: #F7EDFF;
+}
+
+.form-b {
+    background-color: #98B2FF;
+}
+
+.form-border {
+    border-color: #98B2FF;
+}
+
+form>input:focus {
+    border: none;
 }

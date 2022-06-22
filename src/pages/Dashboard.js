@@ -8,7 +8,7 @@ function Dashboard(props) {
     return (
         <div style={{ backgroundColor: "#F5F7FB" }}>
             <div className='d-flex flex-row'>
-                <div className='d-flex card border-0 d-sm-none d-md-block d-lg-block col-md-2 col-lg-2 bg-white flex-column' style={{ height: "100vh" }}>
+                <div className='d-flex card border-0 d-sm-none d-none d-md-block d-lg-block col-md-2 col-lg-2 bg-white flex-column' style={{ height: "100vh" }}>
                     <div className='mt-4 mx-4 d-flex flex-row'>
                         <img src={logo} className="w-25" alt='Logo' />
                         <Link className='navbar-brand px-4 pt-3 text-warning' to="/">VOTE</Link>
@@ -71,25 +71,71 @@ function Dashboard(props) {
                     <AuthNav />
 
                     {/* Welcome Message to Manage Info */}
-                    <div className='container card mt-4 w-50 p-4 d-flex flex-row border-0 rounded-3'>
-                        <div className='d-flex flex-column'>
+                    <div className='container py-2 card shadow-sm mt-4 col-sm-12 col-md-8 col-lg-8 px-4 d-flex flex-sm-column flex-md-row flex-lg-row border-0 rounded-3'>
+                        <div className='d-flex flex-column col-sm-12 col-md-6 col-lg-6'>
                             <h1 className='lightmt fw-bolder'>Welcome  Honorine</h1>
-                            <p className='pt-5'>Manage all the things from single dashboard like editing your profile, voting, register as a candidate.</p>
+                            <p className='pt-5 '>Manage all the things from single dashboard like editing your profile, voting, register as a candidate.</p>
                         </div>
-                        <img src='/assets/manage.png' className='img-fluid' alt='Welcome Image' />
+                        <div className='col-sm-12 col-md-6 col-lg-6'>
+                            <img src='/assets/manage.png' className='img-fluid' alt='Welcome Image' />
+                        </div>
                     </div>
                     {/* View Profile */}
-                    <div className='container card mt-4 w-50 p-4 d-flex flex-row border-0 rounded-3'>
-                        <div className='d-flex flex-column'>
-                            <h1 className='lightmt fw-bolder'>Welcome  Honorine</h1>
-                            <p className='pt-5'>Manage all the things from single dashboard like editing your profile, voting, register as a candidate.</p>
+                    {/* container py-2 card  bg-black shadow-sm mt-4 col-sm-12 col-md-8 col-lg-8 px-4 d-flex flex-sm-column flex-md-row flex-lg-row border-0 rounded-3 */}
+                    <div className='container'>
+                        <div className='row justify-content-center gap-5'>
+                            <div className='card shadow-sm mt-4 col-sm-12 col-md-4 col-lg-4 py-1 d-flex flex-column border-0 rounded-3'>
+                                <div className='d-flex justify-content-center'>
+                                    <img src='https://picsum.photos/50/50' className='img-fluid w-25 rounded-circle' alt='Welcome Image' />
+                                </div>
+                                <div className='text-center'>
+                                    <p className='fw-bold text-center py-2'>Honorine</p>
+                                    <p>A full-stack developer</p>
+                                    <p className='fw-bold'>The Masha Brand Company</p>
+                                    <p className='py-2'>Running to be: <span className='lightyt'>
+                                        President</span>
+                                    </p>
+                                </div>
+                                <p className='text-center'>7 votes</p>
+                            </div>
+                            {/* ------------------------------------------------ */}
+                            <div className='card shadow-sm mx-sm-0 mx-md-5 mx-lg-5 mt-4 col-sm-12 col-md-4 col-lg-4 py-1 d-flex flex-column border-0 rounded-3'>
+                                <h5 className='lightmt text-center fw-bold py-2'>Organisations</h5>
+                                <div className='d-flex justify-content-around border-1 border-bottom py-2'>
+                                    <img src='https://picsum.photos/200/200' className='img-fluid rounded-circle' alt='Welcome Image' style={{ width: "50px", height: "50px" }} />
+                                    <div className='d-flex flex-column'>
+                                        <span className='fw-bold'>Honorine</span>
+                                        <span>Positions: 3</span>
+                                    </div>
+                                </div>
+                                <div className='d-flex justify-content-around border-1 py-2 border-bottom'>
+                                    <img src='https://picsum.photos/300/300' className='img-fluid rounded-circle' alt='Welcome Image' style={{ width: "50px", height: "50px" }} />
+                                    <div className='d-flex flex-column'>
+                                        <span className='fw-bold'>Honorine</span>
+                                        <span>Positions: 3</span>
+                                    </div>
+                                </div>
+                                <div className='d-flex justify-content-around border-1 border-bottom py-2'>
+                                    <img src='https://picsum.photos/25/25' className='img-fluid rounded-circle' alt='Welcome Image' style={{ width: "50px", height: "50px" }} />
+                                    <div className='d-flex flex-column'>
+                                        <span className='fw-bold'>Honorine</span>
+                                        <span>Positions: 3</span>
+                                    </div>
+                                </div>
+                                <div className='d-flex justify-content-around border-1 py-2 border-bottom'>
+                                    <img src='https://picsum.photos/75/75' className='img-fluid rounded-circle' alt='Welcome Image' style={{ width: "50px", height: "50px" }} />
+                                    <div className='d-flex flex-column'>
+                                        <span className='fw-bold'>Honorine</span>
+                                        <span>Positions: 3</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <img src='/assets/manage.png' className='img-fluid' alt='Welcome Image' />
                     </div>
 
                     {/* Personal details */}
 
-                    <div className='container card mt-4 w-50 p-4 d-flex flex-column border-0 rounded-3'>
+                    <div className='container card shadow-sm mt-4 col-sm-12 col-md-8 col-lg-8 d-flex flex-column border-0 rounded-3'>
                         <p className='lightmt py-2'>Personal Details</p>
                         <div className='d-flex row'>
                             <p className='col-4'>Full name:</p>

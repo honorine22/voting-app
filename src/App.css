@@ -2,4 +2,17 @@
   background-image: url('../public/Header.svg');
   background-repeat: no-repeat;
   background-size: cover;
+  height: 75vh;
+}
+
+.can {
+  background-color: #FAF3FF;
+  height: fit-content;
+}
+
+/* 600px || 768px */
+@media only screen and (max-width: 600px) {
+  .header {
+    height: 100vh;
+  }
 }

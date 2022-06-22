@@ -6,7 +6,7 @@ import Button from './Button';
 function Navigation(props) {
     const [isOpen, setIsOpen] = useState(false);
     return (
-        <nav className="navbar py-4 navbar-expand-lg navbar-light bg-transparent">
+        <nav className="navbar sticky-lg-top py-4 navbar-expand-lg navbar-light bg-transparent">
             <div className="container navbar-nav">
                 <div>
                     <Link className='navbar-brand text-warning' to="/">VOTE</Link>
@@ -21,14 +21,16 @@ function Navigation(props) {
                     <Link to="/about" className='nav-link'>About</Link>
                 </div>
                 <div className="nav-item">
-                    <Link to="/howitworks" className='nav-link'>How it works</Link>
-                </div>
-                <div className="nav-item">
                     <Link to="/login" className='nav-link'>Login</Link>
                 </div>
                 <div className="nav-item">
                     <Link to="/register" className='nav-link'>
                         <Button text="Register" className="lightmbo px-5 lightmt" />
+                    </Link>
+                </div>
+                <div className="nav-item">
+                    <Link to="/registercan" className='nav-link'>
+                        <Button text="Register as a candidate" className="lightmbo px-5 lightmt" />
                     </Link>
                 </div>
             </div>
