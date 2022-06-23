@@ -2,7 +2,7 @@ import React from 'react';
 import '../constants/colors.css';
 import hero from '../hero.png';
 import Button from './Button';
-function Header(props) {
+function Header() {
     return (
         <div className='d-sm-block d-md-flex d-lg-flex mt-5 mx-sm-0 mx-md-5 mx-lg-5 justify-content-around'>
             <div className='d-flex col-sm-12 col-md-6 col-lg-3 pt-5 mt-5 flex-column'>
