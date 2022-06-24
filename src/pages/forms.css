@@ -6,6 +6,10 @@
     height: 100vh;
 }
 
+.image{
+    border-style: dashed;
+}
+
 img {
-    height: 535px;
+    height: 540px;
 }
