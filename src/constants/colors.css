@@ -31,6 +31,10 @@
     border-color: #6587FF;
 }
 
+.mainbo {
+    border-color: #3C4DE9;
+}
+
 .lightyt {
     color: #FFC165;
 }
@@ -49,4 +53,9 @@
 
 form>input:focus {
     border: none;
+}
+
+.nodata {
+    background-color: #F7EDFF;
+    height: 100vh;
 }

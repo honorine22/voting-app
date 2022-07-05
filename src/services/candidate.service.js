@@ -15,3 +15,11 @@ export const registerAsCandidate = async (data) => {
             error.response.data
         );
 }
+
+export const vote = async (oid, cid) => {
+    return axios.post(`${API_URL}/candidates/vote/${oid}/${cid}`)
+        .then(res => {
+            return res.data;
+        })
+        .catch(error => error.response.data);
+}

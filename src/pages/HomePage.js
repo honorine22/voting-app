@@ -7,26 +7,28 @@ import Footer from '../components/Footer';
 import { API_URL } from '../config';
 import axios from 'axios';
 
-function HomePage() {
+function HomePage({isAuth}) {
     const [organs, setOrgans] = useState([]);
     useEffect(() => {
         axios.get(`${API_URL}/organnames`)
             .then((res) => {
-                console.log(res.data.orgsData);
                 setOrgans(res.data.orgsData)
             });
     }, []);
+
     return (
         <>
             <div className='header'>
-                <Navigation />
                 <Header />
             </div>
-            <div className='container mt-5 pt-5 pt-sm-5 pt-md-0 pt-lg-0'>
-                <h1 className='text-center py-5 mt-5'>ORGANIZATIONS</h1>
+            <div className='container mt-4 pt-4 pt-sm-4 pt-md-0 pt-lg-0'>
+                <h1 className='text-center py-4 mt-4'>ORGANIZATIONS</h1>
                 <div className='d-flex d-md-flex row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 gap-0'>
                     {organs.map(organ => (
                         <OrgCard oid={organ._id} image={organ.organImg.image} name={organ.orgname} posNum="3" />
+                    ))}
+                    {organs.map(organ => (
+                        <OrgCard keyId={organ._id} oid={organ._id} image={organ.organImg.image} name={organ.orgname} posNum="3" />
                     ))}
                 </div>
             </div>

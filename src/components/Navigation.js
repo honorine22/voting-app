@@ -1,12 +1,35 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../constants/colors.css';
 import { Link } from 'react-router-dom';
 import '../constants/colors.css';
+import "../App.css";
 import Button from './Button';
-function Navigation(props) {
+import { useDispatch, useSelector } from 'react-redux';
+import { Init } from '../store/Auth';
+import { SyncLoader } from 'react-spinners';
+function Navigation({ isAuth }) {
     const [isOpen, setIsOpen] = useState(false);
+
+    const token = useSelector(state => state.Reducers.token);
+    const [loading, setLoading] = useState(true);
+
+    const dispatch = useDispatch();
+    const init = async () => {
+        dispatch(Init(token));
+        setLoading(false);
+    }
+    useEffect(() => {
+        init()
+    }, [])
+    console.log("USER: " + token);
+    if (loading) {
+        return (
+            <SyncLoader />
+        )
+    }
+
     return (
-        <nav className="navbar sticky-lg-top py-4 navbar-expand-lg navbar-light bg-transparent">
+        <nav className="navbar pb-2 navBack navbar-expand-lg navbar-light bg-transparent">
             <div className="container navbar-nav">
                 <div>
                     <Link className='navbar-brand text-warning' to="/">VOTE</Link>
@@ -20,10 +43,10 @@ function Navigation(props) {
                 <div className="nav-item">
                     <Link to="/about" className='nav-link'>About</Link>
                 </div>
-                <div className="nav-item">
+                <div className={`${token == null} ? nav-item : 'visually-hidden'`}>
                     <Link to="/login" className='nav-link'>Login</Link>
                 </div>
-                <div className="nav-item">
+                <div className={`${token == null} ? nav-item : 'visually-hidden'`}>
                     <Link to="/register" className='nav-link'>
                         <Button text="Register" className="lightmbo px-5 lightmt" />
                     </Link>

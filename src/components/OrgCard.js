@@ -1,10 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function OrgCard({ name, posNum, image, oid }) {
-    console.log("IDS: "+oid);
+function OrgCard({ name, keyId, posNum, image, oid }) {
     return (
-        <div className='col-sm-1 col-md-4 col-lg-4'>
+        <div key={keyId} className='col-sm-1 col-md-3 col-lg-3'>
 
             <Link to={`${oid}/candidates`} className='text-black text-decoration-none'>
                 <div className="card shadow h-75 p-4 mb-5 bg-body rounded border-0">

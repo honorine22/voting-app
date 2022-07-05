@@ -7,11 +7,21 @@ import "./forms.css";
 import "../constants/colors.css";
 import formImg from '../assets/form_img.jpg';
 import Navigation from '../components/Navigation';
-import { register } from '../services/auth';
+import { registerService } from '../store/Auth';
+import { SyncLoader } from 'react-spinners';
+import { useDispatch } from 'react-redux';
 
 function Register(props) {
     const navigate = useNavigate();
     const [requestError, setRequestError] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const dispatch = useDispatch();
+
+    const override = {
+        display: 'block',
+        margin: '0 auto',
+        borderColor: 'red'
+    }
 
     const errorInputStyle = {
         border: '1px solid red'
@@ -46,27 +56,49 @@ function Register(props) {
         event.target.files[0] && setIsFilePicked(true);
     };
 
+    // const registerSubmit = async (e) => {
+    //     e.preventDefault();
+    //     setRequestError(false);
+    //     const formData = new FormData();
+    //     if (!selectedFile) return;
+    //     formData.append("username", values.username);
+    //     formData.append("email", values.email);
+    //     formData.append("password", values.password);
+    //     formData.append("profileImg", selectedFile);
+    //     const res = await registerService(formData);
+    //     if (!res?.success)
+    //         return setRequestError(res?.message || 'Something went wrong')
+    //     toast.success("Account created successfully");
+    //     navigate('/login');
+    // };
+
     const registerSubmit = async (e) => {
         e.preventDefault();
-        setRequestError(false);
-        console.log(values);
         const formData = new FormData();
         if (!selectedFile) return;
         formData.append("username", values.username);
         formData.append("email", values.email);
         formData.append("password", values.password);
         formData.append("profileImg", selectedFile);
-        const res = await register(formData);
-        if (!res?.success)
-            return setRequestError(res?.message || 'Something went wrong')
-        console.log(res.data);
-        toast.success("Account created successfully");
-        navigate('/login');
-    };
+        setLoading(true);
+        try {
+            dispatch(registerService(formData));
+            navigate('/login');
+        } catch (err) {
+            setRequestError(err.message);
+            setLoading(false);
+        }
+    }
 
     return (
         <div className='forms'>
-            <Navigation />
+            <SyncLoader
+                css={override}
+                sizeUnit={"px"}
+                size={100}
+                color={'#123abc'}
+                loading={loading}
+            />
             <div className="d-md-flex mt-lg-5 d-lg-flex d-sm-block align-items-center justify-content-center">
                 <div className='d-flex mt-lg-5 col-sm-12 col-md-5 col-lg-2'>
                     <img className='w-100 position-relative py-5' src={formImg} alt='Register Image' />

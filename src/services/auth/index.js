@@ -2,7 +2,6 @@ import axios from 'axios';
 import { API_URL } from '../../config/index.js';
 
 export const login = async (data) => {
-    console.log("Data: " + data);
     return axios.post(`${API_URL}/login`, data)
         .then(res => {
             return res.data;
@@ -24,3 +23,12 @@ export const register = async (data) => {
             error.response.data
         );
 }
+
+export const logout = async () => {
+    localStorage.removeItem("token");
+    const response = await axios.post(API_URL + "/logout");
+    return response.data;
+};
+export const getCurrentUser = () => {
+    return JSON.parse(localStorage.getItem("token"));
+};

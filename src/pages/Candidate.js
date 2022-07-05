@@ -49,7 +49,6 @@ function Candidate(props) {
     const registerSubmit = async (e) => {
         e.preventDefault();
         setRequestError(false);
-        console.log(values);
         const formData = new FormData();
         if (!selectedFile) return;
         formData.append("username", values.username);
@@ -59,7 +58,6 @@ function Candidate(props) {
         const res = await registerAsCandidate(formData);
         if (!res?.success)
             return setRequestError(res?.description || 'Something went wrong')
-        console.log(res.data);
         toast.success("Account created successfully");
         navigate('/login');
     };

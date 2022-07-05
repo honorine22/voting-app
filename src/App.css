@@ -16,3 +16,10 @@
     height: 100vh;
   }
 }
+
+.navBack{
+  background-image: url('../public/Header.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 20%;
+}

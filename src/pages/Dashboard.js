@@ -1,16 +1,23 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import AuthNav from '../components/AuthNav';
 import Button from '../components/Button';
 import logo from '../logo.jpg';
+import { logout } from '../services/auth';
 
 function Dashboard(props) {
+    const navigate = useNavigate();
+    const logUserOut = () => {
+        logout();
+        console.log("removed token");
+        navigate("/");
+    };
     return (
         <div style={{ backgroundColor: "#F5F7FB" }}>
             <div className='d-flex flex-row'>
                 <div className='d-flex card border-0 d-sm-none d-none d-md-block d-lg-block col-md-2 col-lg-2 bg-white flex-column' style={{ height: "100vh" }}>
                     <div className='mt-4 mx-4 d-flex flex-row'>
-                        <img src={logo} className="w-25" alt='Logo' />
+                        <img src={logo} className="img-fluid w-25" alt='Logo' />
                         <Link className='navbar-brand px-4 pt-3 text-warning' to="/">VOTE</Link>
                     </div>
                     <div className='mx-4 my-5'>
@@ -18,7 +25,7 @@ function Dashboard(props) {
                     </div>
                     <div className='d-flex px-4 flex-row'>
                         <svg width="28" height="28" viewBox="0 0 36 31" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g clip-path="url(#clip0_17_385)">
+                            <g clipPath="url(#clip0_17_385)">
                                 <path d="M33.71 14.8844L18.71 1.9714C18.5227 1.81107 18.2692 1.72107 18.005 1.72107C17.7408 1.72107 17.4874 1.81107 17.3 1.9714L2.30003 14.8844C2.1362 15.0491 2.05059 15.261 2.06032 15.4776C2.07004 15.6943 2.17437 15.8998 2.35246 16.0531C2.53056 16.2065 2.7693 16.2963 3.02097 16.3046C3.27265 16.313 3.51873 16.2393 3.71003 16.0983L18 3.79645L32.29 16.1069C32.4813 16.2479 32.7274 16.3216 32.9791 16.3132C33.2308 16.3049 33.4695 16.2151 33.6476 16.0617C33.8257 15.9084 33.93 15.7029 33.9397 15.4862C33.9495 15.2696 33.8639 15.0577 33.7 14.8931L33.71 14.8844Z" fill="#545454" />
                                 <path d="M28 27.5478H23V18.9391H13V27.5478H8V15.4956L6 17.2174V27.5478C6 28.0044 6.21071 28.4424 6.58579 28.7653C6.96086 29.0882 7.46957 29.2696 8 29.2696H15V20.6609H21V29.2696H28C28.5304 29.2696 29.0391 29.0882 29.4142 28.7653C29.7893 28.4424 30 28.0044 30 27.5478V17.0108L28 15.289V27.5478Z" fill="#545454" />
                             </g>
@@ -42,7 +49,7 @@ function Dashboard(props) {
 
                     <div className='d-flex px-4 flex-row'>
                         <svg width="28" height="28" viewBox="0 0 40 49" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M15 42.3387H25M15 42.3387V32.2581M15 42.3387H6C5.73478 42.3387 5.48043 42.2113 5.29289 41.9844C5.10536 41.7576 5 41.4499 5 41.129V33.4678C5 33.1469 5.10536 32.8392 5.29289 32.6124C5.48043 32.3855 5.73478 32.2581 6 32.2581H15M25 42.3387V18.1452M25 42.3387H34C34.2652 42.3387 34.5196 42.2113 34.7071 41.9844C34.8946 41.7576 35 41.4499 35 41.129V7.25808C35 6.93725 34.8946 6.62957 34.7071 6.40271C34.5196 6.17585 34.2652 6.0484 34 6.0484H26C25.7348 6.0484 25.4804 6.17585 25.2929 6.40271C25.1054 6.62957 25 6.93725 25 7.25808V18.1452M25 18.1452H16C15.7348 18.1452 15.4804 18.2726 15.2929 18.4995C15.1054 18.7263 15 19.034 15 19.3549V32.2581" stroke="#545454" stroke-width="1.5" />
+                            <path d="M15 42.3387H25M15 42.3387V32.2581M15 42.3387H6C5.73478 42.3387 5.48043 42.2113 5.29289 41.9844C5.10536 41.7576 5 41.4499 5 41.129V33.4678C5 33.1469 5.10536 32.8392 5.29289 32.6124C5.48043 32.3855 5.73478 32.2581 6 32.2581H15M25 42.3387V18.1452M25 42.3387H34C34.2652 42.3387 34.5196 42.2113 34.7071 41.9844C34.8946 41.7576 35 41.4499 35 41.129V7.25808C35 6.93725 34.8946 6.62957 34.7071 6.40271C34.5196 6.17585 34.2652 6.0484 34 6.0484H26C25.7348 6.0484 25.4804 6.17585 25.2929 6.40271C25.1054 6.62957 25 6.93725 25 7.25808V18.1452M25 18.1452H16C15.7348 18.1452 15.4804 18.2726 15.2929 18.4995C15.1054 18.7263 15 19.034 15 19.3549V32.2581" stroke="#545454" strokeWidth="1.5" />
                         </svg>
                         <Link className="text-black px-2 text-decoration-none" to="/">Results</Link>
                     </div>
@@ -53,10 +60,10 @@ function Dashboard(props) {
                         </svg>
                         <Link className="text-black px-2 text-decoration-none" to="/">Settings</Link>
                     </div>
-                    <div className='d-flex mx-4 flex-column'>
-                        <img src='https://picsum.photos/100/100' style={{ width: "85px" }} className='rounded-circle' alt='Profile' />
-                        <p className='pt-4'>Honorine</p>
-                        <div className='mt-4'>
+                    <div className='d-flex mx-4 justify-content-between'>
+                        <img src='https://picsum.photos/100/100' className='img-fluid w-25 rounded-circle' alt='Profile' />
+                        <div className='d-flex flex-column'>
+                            <p>Honorine</p>
                             <Button text="Edit profile" className="px-4 py-1 lightmb text-white rounded-1" />
                         </div>
                     </div>
@@ -64,7 +71,7 @@ function Dashboard(props) {
                         <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M23.7344 20.0157H21.8121C21.6809 20.0157 21.5578 20.0731 21.4758 20.1743C21.2844 20.4067 21.0793 20.6309 20.8633 20.8442C19.9798 21.7286 18.9333 22.4334 17.7816 22.9196C16.5885 23.4235 15.3061 23.682 14.0109 23.6797C12.7012 23.6797 11.4324 23.4227 10.2402 22.9196C9.08859 22.4334 8.04209 21.7286 7.15859 20.8442C6.27352 19.9628 5.56778 18.9181 5.08047 17.768C4.57461 16.5758 4.32031 15.3098 4.32031 14C4.32031 12.6903 4.57734 11.4243 5.08047 10.2321C5.56719 9.0809 6.26719 8.04457 7.15859 7.1559C8.05 6.26723 9.08633 5.56723 10.2402 5.08051C11.4324 4.57739 12.7012 4.32035 14.0109 4.32035C15.3207 4.32035 16.5894 4.57465 17.7816 5.08051C18.9355 5.56723 19.9719 6.26723 20.8633 7.1559C21.0793 7.37192 21.2816 7.59614 21.4758 7.82582C21.5578 7.92699 21.6836 7.98442 21.8121 7.98442H23.7344C23.9066 7.98442 24.0133 7.79301 23.9176 7.64809C21.8203 4.38871 18.1508 2.23129 13.9809 2.24223C7.42929 2.25864 2.17656 7.577 2.24219 14.1204C2.30781 20.5598 7.55234 25.7579 14.0109 25.7579C18.1699 25.7579 21.823 23.6032 23.9176 20.352C24.0105 20.2071 23.9066 20.0157 23.7344 20.0157ZM26.1652 13.8278L22.2852 10.7653C22.1402 10.6504 21.9297 10.7543 21.9297 10.9375V13.0157H13.3437C13.2234 13.0157 13.125 13.1141 13.125 13.2344V14.7657C13.125 14.886 13.2234 14.9844 13.3437 14.9844H21.9297V17.0625C21.9297 17.2457 22.143 17.3497 22.2852 17.2348L26.1652 14.1723C26.1914 14.1518 26.2125 14.1257 26.2271 14.0959C26.2416 14.066 26.2492 14.0332 26.2492 14C26.2492 13.9668 26.2416 13.9341 26.2271 13.9042C26.2125 13.8744 26.1914 13.8482 26.1652 13.8278V13.8278Z" fill="black" />
                         </svg>
-                        <p className='fw-bolder px-2'>Logout</p>
+                        <p onClick={logUserOut} className='fw-bolder px-2 border-0'>Logout</p>
                     </div>
                 </div>
                 <div className='col-md-10 col-lg-10 d-flex flex-column'>

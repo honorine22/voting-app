@@ -6,13 +6,18 @@ import "../constants/colors.css";
 import formImg from '../assets/form_img.jpg';
 import { Link, useNavigate } from 'react-router-dom';
 import Navigation from '../components/Navigation';
-import toast from 'react-hot-toast';
-import { login } from '../services/auth';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginService } from '../store/Auth';
+import { SyncLoader } from 'react-spinners';
 
 const Login = () => {
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(false);
     const [requestError, setRequestError] = useState(false);
+    const dispatch = useDispatch();
 
+    const reducer = useSelector(state => state.Reducers);
+    console.log("STATES: " + reducer);
     const errorInputStyle = {
         border: '1px solid red'
     }
@@ -34,20 +39,45 @@ const Login = () => {
 
     const { handleChange, values, errors, touched, getFieldProps, isValid } = formik
 
+    // const loginSubmit = async (e) => {
+    // e.preventDefault();
+    //     setRequestError(false);
+    //     setLoading(true);
+    //     const res = await login(values);
+    //     if (!res?.success)
+    //         return setRequestError(res?.message || 'Something went wrong')
+    //     localStorage.setItem('token', JSON.stringify({ token: res.message }));
+    //     toast.success("Logged in successfully");
+    // navigate('/');
+    // };
+
     const loginSubmit = async (e) => {
         e.preventDefault();
-        setRequestError(false);
-        const res = await login(values);
-        if (!res?.success)
-            return setRequestError(res?.message || 'Something went wrong')
-        localStorage.setItem('token', res.message);
-        toast.success("Logged in successfully");
-        navigate('/candidates');
+        setLoading(true);
+        try {
+            dispatch(loginService(values));
+            // navigate('/');
+        } catch (err) {
+            setRequestError(err.message);
+            setLoading(false);
+        }
     };
+
+    const override = {
+        display: 'block',
+        margin: '0 auto',
+        borderColor: 'red'
+    }
 
     return (
         <div className='forms'>
-            <Navigation />
+            <SyncLoader
+                css={override}
+                sizeUnit={"px"}
+                size={150}
+                color={'#123abc'}
+                loading={loading}
+            />
             <div className="d-md-flex mt-lg-5 d-lg-flex d-sm-block align-items-center justify-content-center">
                 <div className='d-flex mt-lg-5 col-sm-12 col-md-5 col-lg-2'>
                     <img className='w-100 position-relative py-5' src={formImg} alt='' />
